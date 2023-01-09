@@ -8,6 +8,7 @@ public class HandController : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameManager gm;
     [SerializeField] private Socket[] socket;
+    [SerializeField] private GameObject canvas;
 
     // 공격 중
     private bool isAttack = false;
@@ -22,7 +23,6 @@ public class HandController : MonoBehaviour
     void Update()
     {
         TryAttack();
-        Debug.Log(swingCount);
     }
 
     private void FixedUpdate() 
@@ -97,6 +97,7 @@ public class HandController : MonoBehaviour
             if (swingCount == 6)
             {
                 SoundManager.Instance.PlaySFX("Fuck");
+                canvas.gameObject.SetActive(true);
             }
 
             yield return null;
